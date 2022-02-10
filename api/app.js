@@ -9,8 +9,11 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT ?? 5000;
 
-const indexRouter = require('./routes/index')
+const indexRouter = require('./routes/index');
 const registr = require("./routes/registr");
+const projects = require("./routes/projects");
+const message = require("./routes/message");
+
 
 const sessionConfig = {
   store: new FileStore(),
@@ -37,6 +40,9 @@ app.use(
 );
 app.use("/", indexRouter);
 app.use("/", registr);
+app.use("/projects", projects);
+app.use("/message", message);
+
 
 app.listen(PORT, () =>
   console.log(`*Server started at http://localhost:${PORT}`)
