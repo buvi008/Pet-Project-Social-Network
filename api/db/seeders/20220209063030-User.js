@@ -60,7 +60,7 @@ module.exports = {
         lastname: 'Бульбов',
         email: 'biba@gmail.com',
         password: '123',
-        status: 'standart~',
+        status: 'standart',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
