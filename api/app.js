@@ -14,6 +14,8 @@ const registration = require("./routes/registr");
 const isAuthorizedRouter = require('./routes/isAuthorized');
 const logoutRouter = require('./routes/logout');
 const loginRouter = require('./routes/login');
+const projects = require("./routes/projects");
+const message = require("./routes/message");
 
 const sessionConfig = {
   store: new FileStore(),
@@ -43,6 +45,8 @@ app.use("/registration", registration);
 app.use('/isAuthorized', isAuthorizedRouter);
 app.use('/logout', logoutRouter);
 app.use('/login', loginRouter);
+app.use("/projects", projects);
+app.use("/message", message);
 
 app.listen(PORT, () =>
   console.log(`*Server started at http://localhost:${PORT}`)

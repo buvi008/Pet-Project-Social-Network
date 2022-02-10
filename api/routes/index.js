@@ -1,7 +1,10 @@
 const router = require("express").Router();
+const { project } = require('./../db/models');
+
 
 router.route("/").get((req, res) => {
-  res.send('Леман Расс ЖОПОШНИК. Магнус Красный')
+  const project = await project.findAll({});
+  return res.json(project);
 });
 
 module.exports = router;
