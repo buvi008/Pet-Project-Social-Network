@@ -1,9 +1,16 @@
 import './App.css';
+import React from 'react';
+import { Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Album from './components/mainPage/main';
+import SignIn from './components/login.js/signIn';
+import SignUp from './components/signUp.js/signUp';
 
 function App() {
   return (
     <div>
-      <img src="https://media.istockphoto.com/photos/gold-letter-s-picture-id621931416" alt="" />
+      <SignIn />
+      <Album />
     </div>
   );
 }
