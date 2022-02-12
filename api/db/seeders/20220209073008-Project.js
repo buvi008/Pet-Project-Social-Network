@@ -3,6 +3,7 @@ module.exports = {
     await queryInterface.bulkInsert('Projects', [
       {
         title: 'TODOLIST',
+        projectImg: '',
         description: 'TODOLIST',
         short_description: 'TODOLIST',
         creator_id: 1,
@@ -11,6 +12,7 @@ module.exports = {
       },
       {
         title: 'Тоже TODOLIST',
+        projectImg: '',
         description: 'Тоже TODOLIST',
         short_description: 'Тоже TODOLIST',
         creator_id: 3,
@@ -19,6 +21,7 @@ module.exports = {
       },
       {
         title: 'Тоже TODOLIST, но есть один нюанс',
+        projectImg: '',
         description: 'Тоже TODOLIST, но есть один нюанс',
         short_description: 'Тоже TODOLIST, но есть один нюанс',
         creator_id: 4,

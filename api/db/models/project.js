@@ -15,7 +15,9 @@ module.exports = (sequelize, DataTypes) => {
   const options = {
     title: {
       type: DataTypes.STRING,
-      unique: true,},
+      unique: true,
+    },
+    projectImg: DataTypes.STRING,
     description: DataTypes.TEXT,
     short_description: DataTypes.STRING,
     creator_id: DataTypes.INTEGER,
