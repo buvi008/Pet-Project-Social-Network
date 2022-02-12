@@ -5,10 +5,11 @@ import App from './App';
 // import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-const application = (
 
+const application = (
   <BrowserRouter>
     <App />
+    <Dashboard />
   </BrowserRouter>
 );
 
