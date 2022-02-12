@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import Dashboard from './components/cabinet/Dashboard';
+// import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+
 
 const application = (
   <BrowserRouter>
@@ -13,7 +15,9 @@ const application = (
 
 ReactDOM.render(
   <React.StrictMode>
-    {application}
+       <BrowserRouter>
+        <App />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),
 );
