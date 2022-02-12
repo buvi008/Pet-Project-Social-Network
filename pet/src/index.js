@@ -6,17 +6,15 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 
 const application = (
-
   <BrowserRouter>
     <App />
+    <Dashboard />
   </BrowserRouter>
 );
 
 ReactDOM.render(
   <React.StrictMode>
-       <BrowserRouter>
-        <App />
-    </BrowserRouter>
+ {application}
   </React.StrictMode>,
   document.getElementById('root'),
 );

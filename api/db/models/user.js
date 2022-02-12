@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   const attributes = {
+    avatarImg: DataTypes.STRING,
     name: DataTypes.STRING,
     lastname: DataTypes.STRING,
     email: {

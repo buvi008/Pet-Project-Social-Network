@@ -2,6 +2,7 @@ module.exports = {
   async up(queryInterface) {
     await queryInterface.bulkInsert('Users', [
       {
+        avatarImg: '',
         name: 'Джон',
         lastname: 'Дориан',
         email: 'jd@gmail.com',
@@ -11,6 +12,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        avatarImg: '',
         name: 'Антон',
         lastname: 'Антонов',
         email: 'ant@gmail.com',
@@ -20,6 +22,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        avatarImg: '',
         name: 'Магомед',
         lastname: 'Магомедов',
         email: 'maga@gmail.com',
@@ -29,6 +32,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        avatarImg: '',
         name: 'Максим',
         lastname: 'Максимов',
         email: 'max@gmail.com',
@@ -38,6 +42,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        avatarImg: '',
         name: 'Антонио',
         lastname: 'Маргарэйти',
         email: '123@gmail.com',
@@ -47,6 +52,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        avatarImg: '',
         name: 'Стефано',
         lastname: 'Алигафрено',
         email: 'Ali_Go_Friend@gmail.com',
@@ -56,6 +62,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        avatarImg: '',
         name: 'Тарас',
         lastname: 'Бульбов',
         email: 'biba@gmail.com',
