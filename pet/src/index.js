@@ -5,7 +5,6 @@ import App from './App';
 // import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-
 const application = (
   <BrowserRouter>
     <App />
@@ -15,9 +14,7 @@ const application = (
 
 ReactDOM.render(
   <React.StrictMode>
-       <BrowserRouter>
-        <App />
-    </BrowserRouter>
+ {application}
   </React.StrictMode>,
   document.getElementById('root'),
 );
