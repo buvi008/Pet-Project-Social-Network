@@ -9,7 +9,6 @@ import SignUp from './components/signUp.js/signUp';
 function App() {
   return (
     <div>
-      
       <Album />
     </div>
   );
