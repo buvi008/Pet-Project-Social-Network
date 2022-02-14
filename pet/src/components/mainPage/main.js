@@ -12,18 +12,17 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 import { ButtonGroup, Button } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './main.css';
+
+import { Link } from 'react-router-dom';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>
       {' '}
       {new Date().getFullYear()}
       .
@@ -46,8 +45,24 @@ export default function Album() {
             LFGP
           </Typography>
           <ButtonGroup className="navButtons" disableElevation variant="contained">
-            <Button>Создать проект</Button>
-            <Button>Найти проект</Button>
+            <Link to='/projects/create'>
+              <Button>Создать проект</Button>
+            </Link>
+            <Link to='/login'>
+              <Button>Найти проект</Button>
+            </Link>
+            <Link to='/auth'>
+              <Button>Регистрация</Button>
+            </Link>
+            <Link to='/login'>
+              <Button>Логин</Button>
+            </Link>
+            <Link to='/logout'>
+              <Button>Logout</Button>
+            </Link>
+            <Link to='/personal'>
+              <Button>Personal</Button>
+            </Link>
           </ButtonGroup>
         </Toolbar>
       </AppBar>

@@ -1,6 +1,9 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable import/prefer-default-export */
+
 import './App.css';
 import React from 'react';
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom';
 import Album from './components/mainPage/main';
@@ -16,44 +19,15 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path='/' element='sdasd'>
-          <Route index element={<Album />} />
-          <Route path='login' element={<Login />} />
-          <Route path='auth' element={<Auth />} />
-          <Route path='logout' element={<Logout />} />
-          <Route
-            path='personal'
-            element={(
-              <Login>
-                <Personal />
-              </Login>
-            )}
-          />
-          <Route
-            path='projects/create'
-            element={(
-              <Login>
-                <FormCreate />
-              </Login>
-            )}
-          />
-          <Route
-            path='projects/:title'
-            element={(
-              <Login>
-                <Project />
-              </Login>
-            )}
-          />
-          <Route
-            path='projects/:title/edit'
-            element={(
-              <Login>
-                <EditProjects />
-              </Login>
-            )}
-          />
-        </Route>
+        <Route path='/' element={<Album />} />
+        <Route path="login" element={<Login />} />
+        <Route path="auth" element={<Auth />} />
+        <Route path="logout" element={<Logout />} />
+        <Route path="personal" element={<Personal />} />
+        <Route path="projects/create" element={<FormCreate />} />
+        <Route path="projects/:title" element={<Project />} />
+        <Route path="projects/:title/edit" element={<EditProjects />} />
+
       </Routes>
     </div>
   );
