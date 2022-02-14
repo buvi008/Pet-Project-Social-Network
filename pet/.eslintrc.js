@@ -27,5 +27,6 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 'off',
     'import/no-unresolved': 'off',
     'jsx-quotes': 'off',
+    'react/jsx-no-undef': 'off',
   },
 };
