@@ -16,7 +16,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path='/' element='sdasd'>
+        <Route path='/' element='{<Layout />}'>
           <Route index element={<Album />} />
           <Route path='login' element={<Login />} />
           <Route path='auth' element={<Auth />} />
