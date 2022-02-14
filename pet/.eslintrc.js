@@ -2,7 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    node: true,
+    node: false,
   },
   extends: ['plugin:react/recommended', 'react-app', 'airbnb'],
   parserOptions: {
