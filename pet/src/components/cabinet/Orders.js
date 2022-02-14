@@ -13,7 +13,6 @@ export default function Orders() {
     });
   }, []);
 
-  console.log(list, 'list');
   return (
     <div>
       <Title>Список проектов</Title>
