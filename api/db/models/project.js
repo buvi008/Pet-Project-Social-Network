@@ -21,7 +21,6 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
     short_description: DataTypes.STRING,
     creator_id: DataTypes.INTEGER,
-    collaborator_id: DataTypes.INTEGER,
   };
 
   const attributes = {
