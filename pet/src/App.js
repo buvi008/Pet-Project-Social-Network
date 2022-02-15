@@ -20,14 +20,13 @@ function App() {
     <div>
       <Routes>
         <Route path='/' element={<Album />} />
-        <Route path="login" element={<Login />} />
-        <Route path="auth" element={<Auth />} />
+        <Route path="login" element={<Auth />} />
+        <Route path="auth" element={<Login />} />
         <Route path="logout" element={<Logout />} />
         <Route path="personal" element={<Personal />} />
-        <Route path="projects/create" element={<FormCreate />} />
-        <Route path="projects/:title" element={<Project />} />
+        <Route path="projects/create" element={<Project />} />
+        <Route path="projects/:title" element={<FormCreate />} /> 
         <Route path="projects/:title/edit" element={<EditProjects />} />
-
       </Routes>
     </div>
   );
