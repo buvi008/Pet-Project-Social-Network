@@ -2,10 +2,11 @@
 /* eslint-disable import/prefer-default-export */
 
 import './App.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 // import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom';
+import axios from 'axios';
 import Album from './components/mainPage/main';
 import Auth from './components/login.js/signIn';
 import Login from './components/signUp.js/signUp';
@@ -16,15 +17,31 @@ import Project from './components/Project';
 import EditProjects from './components/EditProjects';
 
 function App() {
+  const [tags, setTags] = useState(null);
+  const [projects, setProjects] = useState(null);
+  useEffect(() => {
+    (async function () {
+      await axios.get('http://localhost:4000/projects/tags')
+        .then((res) => setTags(res.data));
+    }());
+  }, []);
+
+  useEffect(() => {
+    (async function () {
+      await axios.get('http://localhost:4000/projects/find')
+        .then((res) => setProjects(res.data));
+    }());
+  }, []);
+
   return (
     <div>
       <Routes>
-        <Route path='/' element={<Album />} />
+        <Route path='/' element={<Album projects={projects} />} />
         <Route path="login" element={<Login />} />
         <Route path="auth" element={<Auth />} />
         <Route path="logout" element={<Logout />} />
         <Route path="personal" element={<Personal />} />
-        <Route path="projects/create" element={<Project />} />
+        <Route path="projects/create" element={<Project tags={tags} />} />
         <Route path="projects/:title" element={<FormCreate />} />
         <Route path="projects/:title/edit" element={<EditProjects />} />
       </Routes>
