@@ -4,9 +4,11 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Button } from '@mui/material';
 // import axios from 'axios'
 
-export default function Project() {
+export default function Project({ tags }) {
   return (
     <>
       <Typography variant="h6" gutterBottom>
@@ -51,6 +53,7 @@ export default function Project() {
             id="tags"
             name="tags"
             label="tags"
+            options={tags}
             fullWidth
             autoComplete="shipping address-line2"
             variant="standard"
@@ -59,11 +62,15 @@ export default function Project() {
 
         <Grid item xs={12}>
           <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
+            control={
+              <Checkbox color="secondary" name="saveAddress" value="yes" />
+            }
             label="Use this address for payment details"
           />
         </Grid>
       </Grid>
+      <Button>Создать проект</Button>
+
     </>
   );
 }

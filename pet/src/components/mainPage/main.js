@@ -16,7 +16,7 @@ import Container from '@mui/material/Container';
 import { ButtonGroup, Button } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './main.css';
-
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Copyright() {
@@ -30,11 +30,11 @@ function Copyright() {
   );
 }
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 const theme = createTheme();
 
-export default function Album() {
+export default function Album({ projects }) {
+  const cards = projects ?? [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -44,23 +44,27 @@ export default function Album() {
           <Typography variant="h6" color="inherit" noWrap>
             LFGP
           </Typography>
-          <ButtonGroup className="navButtons" disableElevation variant="contained">
-            <Link to='/projects/create'>
+          <ButtonGroup
+            className="navButtons"
+            disableElevation
+            variant="contained"
+          >
+            <Link to="/projects/create">
               <Button>Создать проект</Button>
             </Link>
-            <Link to='/login'>
+            <Link to="/login">
               <Button>Найти проект</Button>
             </Link>
-            <Link to='/auth'>
+            <Link to="/auth">
               <Button>Регистрация</Button>
             </Link>
-            <Link to='/login'>
+            <Link to="/login">
               <Button>Логин</Button>
             </Link>
-            <Link to='/logout'>
+            <Link to="/logout">
               <Button>Logout</Button>
             </Link>
-            <Link to='/personal'>
+            <Link to="/personal">
               <Button>Personal</Button>
             </Link>
           </ButtonGroup>
@@ -85,10 +89,15 @@ export default function Album() {
             >
               Album layout
             </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Something short and leading about the collection below—its contents,
-              the creator, etc. Make it short and sweet, but not too short so folks
-              don&apos;t simply skip over it entirely.
+            <Typography
+              variant="h5"
+              align="center"
+              color="text.secondary"
+              paragraph
+            >
+              Something short and leading about the collection below—its
+              contents, the creator, etc. Make it short and sweet, but not too
+              short so folks don&apos;t simply skip over it entirely.
             </Typography>
             <Stack
               sx={{ pt: 4 }}
@@ -107,7 +116,11 @@ export default function Album() {
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                  sx={{
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}
                 >
                   <CardMedia
                     component="img"
@@ -123,8 +136,8 @@ export default function Album() {
                       Heading
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
+                      This is a media card. You can use this section to describe
+                      the content.
                     </Typography>
                   </CardContent>
                   <CardActions>
