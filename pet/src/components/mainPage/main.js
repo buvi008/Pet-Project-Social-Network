@@ -52,7 +52,7 @@ export default function Album({ projects }) {
             <Link to="/projects/create">
               <Button>Создать проект</Button>
             </Link>
-            <Link to="/login">
+            <Link to="/projects/:title">
               <Button>Найти проект</Button>
             </Link>
             <Link to="/auth">
