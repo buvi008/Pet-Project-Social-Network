@@ -21,7 +21,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Album />} />
         <Route path="login" element={<Login />} />
-        <Route path="auth" element={<Auth />} /> 
+        <Route path="auth" element={<Auth />} />
         <Route path="logout" element={<Logout />} />
         <Route path="personal" element={<Personal />} />
         <Route path="projects/create" element={<Project />} />
