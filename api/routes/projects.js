@@ -15,7 +15,7 @@ router.route('/find').get(async (req, res) => {
 router.route('/create').post(async (req, res) => {
   let project;
   try {
-    project = await project.create({
+    project = await Project.create({
       title: req.body.title,
       description:  req.body.description,
       short_description:  req.body.short_description,
@@ -51,7 +51,7 @@ router.put('/:title/addteam', async (req, res) => {
 
 router.delete('/:title', async (req, res) => {
   try {
-    await Entry.destroy({ where: { title: req.params.title } });
+    await Project.destroy({ where: { title: req.params.title } });
   } catch (error) {
     return res.json({
       isDeleteSuccessful: false,
@@ -65,11 +65,11 @@ router.delete('/:title', async (req, res) => {
 router.put('/:title/edit', async (req, res) => {
   let project;
   try {
-    project = await project.update(
+    project = await Project.update(
       {
-        description: XXXX,
-        short_description: XXXXX,
-        creator_id: XXXX,
+        title: req.body.title,
+        description:  req.body.description,
+        short_description:  req.body.short_description,
       },
       { where: { title: req.params.title }, returning: true, plain: true }
     );
