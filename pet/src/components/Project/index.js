@@ -18,7 +18,7 @@ export default function Project({ tags }) {
   // const [title, SetTitle] = useState(null);
   // const [description, SetDescription] = useState(null);
   // const [SDescription, SetSDescription] = useState(null);
-
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const handleSubmit = async (event) => {
@@ -29,6 +29,7 @@ export default function Project({ tags }) {
       title: input.get('title'),
       description: input.get('description'),
       short_description: input.get('SDescription'),
+      creator_id: user.id,
     };
 
     const data = await dispatch(fetchCreate(body));
