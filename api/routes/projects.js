@@ -16,7 +16,7 @@ router.route('/create').post(async (req, res) => {
   console.log(req);
   let project;
   try {
-    project = await project.create({
+    project = await Project.create({
       title: req.body.title,
       description:  req.body.description,
       short_description:  req.body.short_description,
@@ -80,9 +80,9 @@ router.put('/:title/edit', async (req, res) => {
   try {
     project = await Project.update(
       {
-        description: XXXX,
-        short_description: XXXXX,
-        creator_id: XXXX,
+        title: req.body.title,
+        description:  req.body.description,
+        short_description:  req.body.short_description,
       },
       { where: { title: req.params.title }, returning: true, plain: true }
     );
