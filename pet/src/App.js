@@ -39,7 +39,7 @@ function App() {
         <Route path='/' element={<Album projects={projects} />} />
         <Route path="login" element={<Login />} />
         <Route path="auth" element={<Auth />} />
-        <Route path="logout" element={<Logout />} />
+        {/* <Route path="logout" element={<Logout />} /> */}
         <Route path="personal" element={<Personal />} />
         <Route path="projects/create" element={<Project tags={tags} />} />
         <Route path="projects/:title" element={<FormCreate />} />

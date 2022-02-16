@@ -71,9 +71,7 @@ export default function Album({ projects }) {
             <Link to='/login'>
               <Button>Логин</Button>
             </Link>
-            <Link to='/logout'>
-              <Button onClick={logout}>Logout</Button>
-            </Link>
+            <Button onClick={logout}>Logout</Button>
             <Link to='/personal'>
               <Button>Personal</Button>
             </Link>
