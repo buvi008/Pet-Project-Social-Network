@@ -19,7 +19,7 @@ router.route('/create').post(async (req, res) => {
       title: req.body.title,
       description:  req.body.description,
       short_description:  req.body.short_description,
-      creator_id: 1,
+      creator_id: req.body.creator_id,
     });
   } catch (error) {
     return res.json({
