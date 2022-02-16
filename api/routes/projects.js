@@ -9,18 +9,18 @@ router.route('/find').get(async (req, res) => {
     console.log(e);
   }
 
-  // res.send('111').end();
+ 
 });
 
 router.route('/create').post(async (req, res) => {
   console.log(req);
   let project;
   try {
-    project = await Project.create({
-      title: XXXX,
-      description: XXXX,
-      short_description: XXXXX,
-      creator_id: XXXX,
+    project = await project.create({
+      title: req.body.title,
+      description:  req.body.description,
+      short_description:  req.body.short_description,
+      creator_id: 1,
     });
   } catch (error) {
     return res.json({
