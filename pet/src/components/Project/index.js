@@ -39,26 +39,6 @@ export default function Project({ tags }) {
     }
   };
 
-  // function onChangeTitle(value) {
-  //   SetTitle(value);
-  // }
-  // function onChangeDescription(value) {
-  //   SetDescription(value);
-  // }
-  // function onChangeSDescription(value) {
-  //   SetSDescription(value);
-  // }
-
-  // async function OnClick() {
-  //   await axios
-  //     .post('http://localhost:4000/projects/create', {
-  //       title: title,
-  //       description: description,
-  //       short_description: SDescription,
-  //     })
-  //     .then((res) => navigate('/'));
-  // }
-
   return (
     <>
       <Typography variant='h6' gutterBottom>
@@ -99,26 +79,6 @@ export default function Project({ tags }) {
               variant='standard'
             />
           </Grid>
-          <Grid item xs={12}>
-            <TextField
-              id='tags'
-              name='tags'
-              label='tags'
-              options={tags}
-              fullWidth
-              autoComplete='shipping address-line2'
-              variant='standard'
-            />
-          </Grid>
-
-          <Grid item xs={12}>
-            <FormControlLabel
-              control={
-                <Checkbox color='secondary' name='saveAddress' value='yes' />
-              }
-              label='Use this address for payment details'
-            />
-          </Grid>
         </Grid>
         <Button
           type='submit'
@@ -126,7 +86,7 @@ export default function Project({ tags }) {
           variant='contained'
           sx={{ mt: 3, mb: 2 }}
         >
-          Войти
+          Создать
         </Button>
       </Box>
     </>
