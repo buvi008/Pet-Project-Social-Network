@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCreate } from '../redux/actionCreators/createProject';
 
-export default function Project({ tags }) {
+export default function CreateForm({ tags }) {
   const navigate = useNavigate();
   // const [title, SetTitle] = useState(null);
   // const [description, SetDescription] = useState(null);
