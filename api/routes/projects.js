@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Project } = require('./../db/models');
+const { Project, Tag } = require('./../db/models');
 
 router.route('/find').get(async (req, res) => {
   try {
@@ -13,6 +13,7 @@ router.route('/find').get(async (req, res) => {
 });
 
 router.route('/create').post(async (req, res) => {
+  console.log(req);
   let project;
   try {
     project = await project.create({
@@ -30,7 +31,19 @@ router.route('/create').post(async (req, res) => {
 
   return res.json(project);
 });
+router.route('/tags').get(async (req, res) =>{
+  let tags;
+  try {
+    project = await Tag.findAll({ raw: true });
+  } catch (error) {
+    return res.json({
+      isUpdateSuccessful: false,
+      errorMessage: 'Не удалось обновить запись в базе данных.',
+    });
+  }
 
+  return res.json(tags);
+})
 router.put('/:title/addteam', async (req, res) => {
   let project;
   try {
@@ -51,7 +64,7 @@ router.put('/:title/addteam', async (req, res) => {
 
 router.delete('/:title', async (req, res) => {
   try {
-    await Entry.destroy({ where: { title: req.params.title } });
+    await Project.destroy({ where: { title: req.params.title } });
   } catch (error) {
     return res.json({
       isDeleteSuccessful: false,
@@ -65,7 +78,7 @@ router.delete('/:title', async (req, res) => {
 router.put('/:title/edit', async (req, res) => {
   let project;
   try {
-    project = await project.update(
+    project = await Project.update(
       {
         description: XXXX,
         short_description: XXXXX,
