@@ -1,5 +1,5 @@
+/* eslint-disable */
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
 // import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -9,24 +9,17 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
+import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 // import Link from '@mui/material/Link';
-import { ButtonGroup, Button } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './main.css';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchLogout } from '../redux/actionCreators/LogoutAC';
 
 function Copyright() {
   return (
     <Typography variant='body2' color='text.secondary' align='center'>
-      {'Copyright © '}
-      {' '}
-      {new Date().getFullYear()}
-      .
+      {'Copyright © '} {new Date().getFullYear()}.
     </Typography>
   );
 }
@@ -36,48 +29,9 @@ const theme = createTheme();
 export default function Album({ projects }) {
   const cards = projects ?? [];
 
-  const state = useSelector((stat) => stat.checkSessionReducer.isAuthorized);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const logout = async () => {
-    dispatch(fetchLogout());
-    navigate('/');
-  };
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position='relative'>
-        <Toolbar className='navButtons'>
-          {/* <CameraIcon sx={{ mr: 2 }} /> */}
-          <Typography variant='h6' color='inherit' noWrap>
-            LFGP
-          </Typography>
-          <ButtonGroup
-            className='navButtons'
-            disableElevation
-            variant='contained'
-          >
-            <Link to='/projects/create'>
-              <Button>Создать проект</Button>
-            </Link>
-            <Link to='/login'>
-              <Button>Найти проект</Button>
-            </Link>
-            <Link to='/auth'>
-              <Button>Регистрация</Button>
-            </Link>
-            <Link to='/login'>
-              <Button>Логин</Button>
-            </Link>
-            <Button onClick={logout}>Logout</Button>
-            <Link to='/personal'>
-              <Button>Personal</Button>
-            </Link>
-          </ButtonGroup>
-        </Toolbar>
-      </AppBar>
       <main>
         {/* Hero unit */}
         <Box
@@ -145,9 +99,7 @@ export default function Album({ projects }) {
                     <Typography gutterBottom variant='h5' component='h2'>
                       {card.title}
                     </Typography>
-                    <Typography>
-                      {card.short_description}
-                    </Typography>
+                    <Typography>{card.short_description}</Typography>
                   </CardContent>
                   <CardActions>
                     <Button size='small'>View</Button>

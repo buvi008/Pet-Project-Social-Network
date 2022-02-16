@@ -2,14 +2,16 @@ const router = require('express').Router();
 const { Project, Tag } = require('./../db/models');
 
 router.route('/find').get(async (req, res) => {
+  console.log('projects==>', req.session);
   try {
-    const project = await Project.findAll({ raw: true });
+    const project = await Project.findAll({
+      where: { creator_id: req.session.user.id },
+      raw: true,
+    });
     return res.json(project);
   } catch (e) {
     console.log(e);
   }
-
- 
 });
 
 router.route('/create').post(async (req, res) => {
@@ -18,8 +20,8 @@ router.route('/create').post(async (req, res) => {
   try {
     project = await project.create({
       title: req.body.title,
-      description:  req.body.description,
-      short_description:  req.body.short_description,
+      description: req.body.description,
+      short_description: req.body.short_description,
       creator_id: 1,
     });
   } catch (error) {
@@ -31,7 +33,7 @@ router.route('/create').post(async (req, res) => {
 
   return res.json(project);
 });
-router.route('/tags').get(async (req, res) =>{
+router.route('/tags').get(async (req, res) => {
   let tags;
   try {
     project = await Tag.findAll({ raw: true });
@@ -43,7 +45,7 @@ router.route('/tags').get(async (req, res) =>{
   }
 
   return res.json(tags);
-})
+});
 router.put('/:title/addteam', async (req, res) => {
   let project;
   try {
