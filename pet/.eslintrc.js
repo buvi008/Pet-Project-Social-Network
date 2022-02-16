@@ -28,5 +28,7 @@ module.exports = {
     'import/no-unresolved': 'off',
     'jsx-quotes': 'off',
     'react/jsx-no-undef': 'off',
+    'import/prefer-default-export': 'off',
+    'default-param-last': 'off',
   },
 };

@@ -16,12 +16,13 @@ import Container from '@mui/material/Container';
 import { ButtonGroup, Button } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './main.css';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchLogout } from '../redux/actionCreators/LogoutAC';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="text.secondary" align="center">
+    <Typography variant='body2' color='text.secondary' align='center'>
       {'Copyright © '}
       {' '}
       {new Date().getFullYear()}
@@ -33,38 +34,47 @@ function Copyright() {
 const theme = createTheme();
 
 export default function Album({ projects }) {
-  const cards = projects ?? [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const cards = projects ?? [];
+
+  const state = useSelector((stat) => stat.checkSessionReducer.isAuthorized);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const logout = async () => {
+    dispatch(fetchLogout());
+    navigate('/');
+  };
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar className="navButtons">
+      <AppBar position='relative'>
+        <Toolbar className='navButtons'>
           {/* <CameraIcon sx={{ mr: 2 }} /> */}
-          <Typography variant="h6" color="inherit" noWrap>
+          <Typography variant='h6' color='inherit' noWrap>
             LFGP
           </Typography>
           <ButtonGroup
-            className="navButtons"
+            className='navButtons'
             disableElevation
-            variant="contained"
+            variant='contained'
           >
-            <Link to="/projects/create">
+            <Link to='/projects/create'>
               <Button>Создать проект</Button>
             </Link>
-            <Link to="/login">
+            <Link to='/login'>
               <Button>Найти проект</Button>
             </Link>
-            <Link to="/auth">
+            <Link to='/auth'>
               <Button>Регистрация</Button>
             </Link>
-            <Link to="/login">
+            <Link to='/login'>
               <Button>Логин</Button>
             </Link>
-            <Link to="/logout">
-              <Button>Logout</Button>
+            <Link to='/logout'>
+              <Button onClick={logout}>Logout</Button>
             </Link>
-            <Link to="/personal">
+            <Link to='/personal'>
               <Button>Personal</Button>
             </Link>
           </ButtonGroup>
@@ -79,20 +89,20 @@ export default function Album({ projects }) {
             pb: 6,
           }}
         >
-          <Container maxWidth="sm">
+          <Container maxWidth='sm'>
             <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="text.primary"
+              component='h1'
+              variant='h2'
+              align='center'
+              color='text.primary'
               gutterBottom
             >
               Album layout
             </Typography>
             <Typography
-              variant="h5"
-              align="center"
-              color="text.secondary"
+              variant='h5'
+              align='center'
+              color='text.secondary'
               paragraph
             >
               Something short and leading about the collection below—its
@@ -101,20 +111,22 @@ export default function Album({ projects }) {
             </Typography>
             <Stack
               sx={{ pt: 4 }}
-              direction="row"
+              direction='row'
               spacing={2}
-              justifyContent="center"
+              justifyContent='center'
             >
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
+              <Button variant='contained'>Main call to action</Button>
+              <Button variant='outlined'>Secondary action</Button>
             </Stack>
           </Container>
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
+        <Container sx={{ py: 8 }} maxWidth='md'>
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {cards.map((card, i) => (
+              // eslint-disable-next-line space-infix-ops
+              // eslint-disable-next-line react/no-array-index-key
+              <Grid item key={i} xs={12} sm={6} md={4}>
                 <Card
                   sx={{
                     height: '100%',
@@ -123,16 +135,16 @@ export default function Album({ projects }) {
                   }}
                 >
                   <CardMedia
-                    component="img"
+                    component='img'
                     sx={{
                       // 16:9
                       pt: '56.25%',
                     }}
-                    image="https://source.unsplash.com/random"
-                    alt="random"
+                    image='https://source.unsplash.com/random'
+                    alt='random'
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant='h5' component='h2'>
                       Heading
                     </Typography>
                     <Typography>
@@ -141,8 +153,8 @@ export default function Album({ projects }) {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
+                    <Button size='small'>View</Button>
+                    <Button size='small'>Edit</Button>
                   </CardActions>
                 </Card>
               </Grid>
@@ -151,15 +163,15 @@ export default function Album({ projects }) {
         </Container>
       </main>
       {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
+      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component='footer'>
+        <Typography variant='h6' align='center' gutterBottom>
           Footer
         </Typography>
         <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
+          variant='subtitle1'
+          align='center'
+          color='text.secondary'
+          component='p'
         >
           Something here to give the footer a purpose!
         </Typography>
