@@ -39,7 +39,7 @@ export default function Album({ projects }) {
   const state = useSelector((stat) => stat.checkSessionReducer.isAuthorized);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const title = (arg) = navigate(`/projects/${arg}`, {state: arg})
   const logout = async () => {
     dispatch(fetchLogout());
     navigate('/');
@@ -148,9 +148,7 @@ export default function Album({ projects }) {
                     <Typography>{card.short_description}</Typography>
                   </CardContent>
                   <CardActions>
-                    <Link to={`/projects/${card.title}`}>
-                      <Button size="small">View</Button>
-                    </Link>
+                      <Button onClick={title(card.title)} size="small">View</Button>
                   </CardActions>
                 </Card>
               </Grid>
