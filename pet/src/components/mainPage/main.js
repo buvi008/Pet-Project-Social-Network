@@ -30,54 +30,24 @@ function Copyright() {
     </Typography>
   );
 }
-
 const theme = createTheme();
-
 export default function Album({ projects }) {
   const cards = projects ?? [];
-
   const state = useSelector((stat) => stat.checkSessionReducer.isAuthorized);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const title = (arg) = navigate(`/projects/${arg}`, {state: arg})
+  const title = (arg) => {
+    console.log('Привет', arg);
+    navigate(`/project/${arg}`, { state: arg });
+  };
   const logout = async () => {
     dispatch(fetchLogout());
     navigate('/');
   };
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar className="navButtons">
-          {/* <CameraIcon sx={{ mr: 2 }} /> */}
-          <Typography variant="h6" color="inherit" noWrap>
-            LFGP
-          </Typography>
-          <ButtonGroup
-            className="navButtons"
-            disableElevation
-            variant="contained"
-          >
-            <Link to="/projects/create">
-              <Button>Создать проект</Button>
-            </Link>
-            <Link to="/login">
-              <Button>Найти проект</Button>
-            </Link>
-            <Link to="/auth">
-              <Button>Регистрация</Button>
-            </Link>
-            <Link to="/login">
-              <Button>Логин</Button>
-            </Link>
-            <Button onClick={logout}>Logout</Button>
-            <Link to="/personal">
-              <Button>Personal</Button>
-            </Link>
-          </ButtonGroup>
-        </Toolbar>
-      </AppBar>
+
       <main>
         {/* Hero unit */}
         <Box
@@ -148,7 +118,7 @@ export default function Album({ projects }) {
                     <Typography>{card.short_description}</Typography>
                   </CardContent>
                   <CardActions>
-                      <Button onClick={title(card.title)} size="small">View</Button>
+                    <button type="submit" onClick={() => title(card.id)} size="small">View</button>
                   </CardActions>
                 </Card>
               </Grid>
