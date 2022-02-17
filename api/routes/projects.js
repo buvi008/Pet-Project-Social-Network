@@ -66,7 +66,7 @@ router.put('/:title/addteam', async (req, res) => {
 
 router.delete('/:title', async (req, res) => {
   try {
-    await Project.destroy({ where: { id: req.params.title } });
+    await Project.destroy({ where: { id: Number(req.params.title) } });
   } catch (error) {
     return res.json({
       isDeleteSuccessful: false,
@@ -86,7 +86,7 @@ router.put('/:title/edit', async (req, res) => {
         description:  req.body.description,
         short_description:  req.body.short_description,
       },
-      { where: { id: req.params.title }, returning: true, plain: true }
+      { where: { id: Number(req.params.title) }, returning: true, plain: true }
     );
   } catch (error) {
     return res.json({
@@ -99,10 +99,11 @@ router.put('/:title/edit', async (req, res) => {
 });
 
 router.route('/:title').get(async (req, res) => {
-  const title = req.params.title;
+  const title = Number(req.params.title);
 
-  const project = await Project.findOne({ where: { id: title } });
-  return res.json(project);
+  const project = await Project.findOne({ where: { id: title }, returning: true, plain: true });
+  console.log(project.dataValues);
+  return res.json(project.dataValues);
 });
 
 module.exports = router;

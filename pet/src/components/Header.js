@@ -5,10 +5,10 @@ import {
   Toolbar,
   AppBar,
   Typography,
-} from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchLogout } from './redux/actionCreators/LogoutAC';
+} from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchLogout } from "./redux/actionCreators/LogoutAC";
 
 export default function Header() {
   const state = useSelector((state) => state.checkSessionReducer.isAuthorized);
@@ -16,35 +16,38 @@ export default function Header() {
   const navigate = useNavigate();
   const logout = async () => {
     dispatch(fetchLogout());
-    navigate('/');
+    navigate("/");
   };
 
   return (
-    <AppBar position='relative'>
-      <Toolbar className='navButtons'>
+    <AppBar position="relative">
+      <Toolbar className="navButtons">
         {/* <CameraIcon sx={{ mr: 2 }} /> */}
-        <Typography variant='h6' color='inherit' noWrap>
+        <Typography variant="h6" color="inherit" noWrap>
           LFGP
         </Typography>
         <ButtonGroup
-          className='navButtons'
+          className="navButtons"
           disableElevation
-          variant='contained'
+          variant="contained"
         >
-          <Link to='/projects/create'>
+          <Link to="/">
+            <Button>Главная</Button>
+          </Link>
+          <Link to="/projects/create">
             <Button>Создать проект</Button>
           </Link>
-          <Link to='/login'>
+          <Link to="/login">
             <Button>Найти проект</Button>
           </Link>
-          <Link to='/auth'>
+          <Link to="/auth">
             <Button>Регистрация</Button>
           </Link>
-          <Link to='/login'>
+          <Link to="/login">
             <Button>Логин</Button>
           </Link>
           <Button onClick={logout}>Logout</Button>
-          <Link to='/personal'>
+          <Link to="/personal">
             <Button>Personal</Button>
           </Link>
         </ButtonGroup>

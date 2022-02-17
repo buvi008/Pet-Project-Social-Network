@@ -1,7 +1,7 @@
 import { checkSession } from './isAuthorizedAC';
 
 export const fetchEdit = (payload) => async (dispatch) => {
-  const response = await fetch(`http://localhost:4000/${payload.origin}/edit`, {
+  const response = await fetch(`http://localhost:4000/project/${payload.origin}/edit`, {
     method: 'POST',
     credentials: 'include',
     headers: {

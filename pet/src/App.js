@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     (async function () {
       await axios
-        .get('http://localhost:4000/projects/tags')
+        .get('http://localhost:4000/project/tags')
         .then((res) => setTags(res.data));
     })();
   }, []);
@@ -32,7 +32,7 @@ function App() {
   useEffect(() => {
     (async function () {
       await axios
-        .get('http://localhost:4000/projects/find')
+        .get('http://localhost:4000/project/find')
         .then((res) => setProjects(res.data));
     })();
   }, []);

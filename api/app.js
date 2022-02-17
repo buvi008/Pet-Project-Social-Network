@@ -45,7 +45,7 @@ app.use('/registration', registration);
 app.use('/isAuthorized', isAuthorizedRouter);
 app.use('/logout', logoutRouter);
 app.use('/login', loginRouter);
-app.use('/projects', projects);
+app.use('/project', projects);
 app.use('/message', message);
 
 app.listen(PORT, () =>

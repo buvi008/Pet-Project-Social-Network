@@ -37,7 +37,7 @@ export default function Album({ projects }) {
   const navigate = useNavigate();
   const title = (arg) => {
     console.log('Привет', arg);
-    navigate(`/project/${arg}`, { state: arg });
+    // navigate(`/projects/${arg}`, { state: arg });
   };
   const logout = async () => {
     dispatch(fetchLogout());
@@ -117,7 +117,7 @@ export default function Album({ projects }) {
                     <Typography>{card.short_description}</Typography>
                   </CardContent>
                   <CardActions>
-                    <button type="submit" onClick={() => title(card.id)} size="small">View</button>
+                    <Button size="small">View</Button>
                   </CardActions>
                 </Card>
               </Grid>

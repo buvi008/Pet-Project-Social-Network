@@ -18,22 +18,19 @@ function Project() {
   const navigate = useNavigate();
   const user = useSelector((state) => state.checkSessionReducer.user);
   const dispatch = useDispatch();
-  const [projects, setProjects] = useState(null);
+  const [projects, setProjects] = useState();
 
   useEffect(() => {
-    (async function () {
-      await axios.get(`http://localhost:4000/${origin}`)
-        .then((res) => setProjects(res.data));
-    }());
-  }, []);
-
+    axios
+      .get(`http://localhost:4000/project/${origin}`)
+      .then((res) => setProjects(res.data));
+  }, [origin]);
   const handleSubmit = async (event) => {
     event.preventDefault();
     // eslint-disable-next-line no-console
     console.log(user);
     const input = new FormData(event.currentTarget);
     const body = {
-
       title: input.get('title'),
       description: input.get('description'),
       short_description: input.get('SDescription'),
@@ -47,8 +44,7 @@ function Project() {
       navigate('/personal');
     }
   };
-
-  return (
+  setTimeout(() => (
     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
       <Typography container spacing={3}>
         <Typography item xs={12} sm={6}>
@@ -69,7 +65,7 @@ function Project() {
             id="short_description"
             name="short_description"
             label="short_description"
-            value={`${projects.short_description}`}
+              // value={`${projects.short_description}`}
             fullWidth
             autoComplete="family-name"
             variant="standard"
@@ -81,18 +77,24 @@ function Project() {
             id="description"
             name="description"
             label="description"
-            value={`${projects.description}`}
+              // value={`${projects.description}`}
             fullWidth
             autoComplete="shipping address-line1"
             variant="standard"
           />
         </Typography>
       </Typography>
-      <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+      <Button
+        type="submit"
+        fullWidth
+        variant="contained"
+        sx={{ mt: 3, mb: 2 }}
+      >
         Изменить
       </Button>
     </Box>
-  );
+  ), 100);
+  // console.log('jnhfhsjdjnsjdvks', projects.id);
 }
 
 export default Project;

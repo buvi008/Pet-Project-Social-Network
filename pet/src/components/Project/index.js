@@ -34,58 +34,54 @@ export default function CreateForm({ tags }) {
     };
 
     const data = await dispatch(fetchCreate(body));
-
-    if (data.payload) {
-      dispatch(fetchCreate(body));
-      navigate('/personal');
-    }
+    navigate('/personal');
   };
 
   return (
     <>
-      <Typography variant='h6' gutterBottom>
+      <Typography variant="h6" gutterBottom>
         Shipping address
       </Typography>
-      <Box component='form' onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+      <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
             <TextField
               required
-              id='title'
-              name='title'
-              label='title'
+              id="title"
+              name="title"
+              label="title"
               fullWidth
-              autoComplete='given-name'
-              variant='standard'
+              autoComplete="given-name"
+              variant="standard"
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               required
-              id='short_description'
-              name='short_description'
-              label='short_description'
+              id="short_description"
+              name="short_description"
+              label="short_description"
               fullWidth
-              autoComplete='family-name'
-              variant='standard'
+              autoComplete="family-name"
+              variant="standard"
             />
           </Grid>
           <Grid item xs={12}>
             <TextField
               required
-              id='description'
-              name='description'
-              label='description'
+              id="description"
+              name="description"
+              label="description"
               fullWidth
-              autoComplete='shipping address-line1'
-              variant='standard'
+              autoComplete="shipping address-line1"
+              variant="standard"
             />
           </Grid>
         </Grid>
         <Button
-          type='submit'
+          type="submit"
           fullWidth
-          variant='contained'
+          variant="contained"
           sx={{ mt: 3, mb: 2 }}
         >
           Создать
