@@ -31,6 +31,7 @@ function Project() {
     // eslint-disable-next-line no-console
     const input = new FormData(event.currentTarget);
     const body = {
+
       title: input.get('title'),
       description: input.get('description'),
       short_description: input.get('SDescription'),

@@ -33,7 +33,6 @@ function Copyright() {
 const theme = createTheme();
 export default function Album({ projects }) {
   const cards = projects ?? [];
-  const state = useSelector((stat) => stat.checkSessionReducer.isAuthorized);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const title = (arg) => {
