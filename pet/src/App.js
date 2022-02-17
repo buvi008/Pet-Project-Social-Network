@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable */
 /* eslint-disable import/prefer-default-export */
 
 import './App.css';
@@ -10,35 +10,40 @@ import axios from 'axios';
 import Album from './components/mainPage/main';
 import Auth from './components/signUp.js/signUp';
 import Login from './components/login.js/signIn';
-import Logout from './components/Auth/Logout';
 import Personal from './components/cabinet/Dashboard';
 import Project from './components/FormCreate';
 import FormCreate from './components/Project';
 import EditProjects from './components/EditProjects';
+import Header from './components/Header';
+
+axios.defaults.withCredentials = true;
 
 function App() {
   const [tags, setTags] = useState(null);
   const [projects, setProjects] = useState(null);
   useEffect(() => {
     (async function () {
-      await axios.get('http://localhost:4000/projects/tags')
+      await axios
+        .get('http://localhost:4000/projects/tags')
         .then((res) => setTags(res.data));
-    }());
+    })();
   }, []);
 
   useEffect(() => {
     (async function () {
-      await axios.get('http://localhost:4000/projects/find')
+      await axios
+        .get('http://localhost:4000/projects/find')
         .then((res) => setProjects(res.data));
-    }());
+    })();
   }, []);
 
   return (
     <div>
+      <Header />
       <Routes>
         <Route path='/' element={<Album projects={projects} />} />
-        <Route path="login" element={<Login />} />
-        <Route path="auth" element={<Auth />} />
+        <Route path='login' element={<Login />} />
+        <Route path='auth' element={<Auth />} />
         {/* <Route path="logout" element={<Logout />} /> */}
         <Route path="personal" element={<Personal />} />
         <Route path="projects/create" element={<FormCreate tags={tags} />} />
