@@ -10,7 +10,6 @@ import axios from 'axios';
 import Album from './components/mainPage/main';
 import Auth from './components/signUp.js/signUp';
 import Login from './components/login.js/signIn';
-import Logout from './components/Auth/Logout';
 import Personal from './components/cabinet/Dashboard';
 import FormCreate from './components/FormCreate';
 import Project from './components/Project';
