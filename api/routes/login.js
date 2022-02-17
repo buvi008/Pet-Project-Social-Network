@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
   if (user && (await bcrypt.compare(password, user.password))) {
     req.session.user = user;
     console.log(req.session);
-    res.status(200).json({ login: true, user: user.username });
+    res.status(200).json({ login: true, user: user });
   } else {
     res.json({
       login: false,

@@ -3,6 +3,7 @@ import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -18,9 +19,9 @@ export default function CreateForm({ tags }) {
   // const [title, SetTitle] = useState(null);
   // const [description, SetDescription] = useState(null);
   // const [SDescription, SetSDescription] = useState(null);
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.checkSessionReducer.user);
   const dispatch = useDispatch();
-
+  console.log('user', user);
   const handleSubmit = async (event) => {
     event.preventDefault();
     // eslint-disable-next-line no-console

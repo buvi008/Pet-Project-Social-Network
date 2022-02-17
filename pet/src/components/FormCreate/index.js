@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 /* eslint-disable object-shorthand */
 import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -15,7 +16,7 @@ import { fetchEdit } from '../redux/actionCreators/editProject';
 function Project() {
   const origin = useLocation().state;
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.checkSessionReducer.user);
   const dispatch = useDispatch();
   const [projects, setProjects] = useState(null);
 
@@ -29,6 +30,7 @@ function Project() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     // eslint-disable-next-line no-console
+    console.log(user);
     const input = new FormData(event.currentTarget);
     const body = {
 
