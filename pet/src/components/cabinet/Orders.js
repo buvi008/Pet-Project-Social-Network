@@ -7,10 +7,12 @@ export default function Orders() {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/projects/find').then((res) => {
-      console.log(res);
-      setList((el) => [...el, ...res.data]);
-    });
+    axios
+      .get('http://localhost:4000/projects/find')
+      .then((res) => {
+        console.log(res);
+        setList((el) => [...el, ...res.data]);
+      });
   }, []);
 
   return (
