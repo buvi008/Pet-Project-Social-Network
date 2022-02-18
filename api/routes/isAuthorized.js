@@ -1,6 +1,6 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
-router.post('/', async (req, res) => {
+router.get("/", async (req, res) => {
   const isAuthorized = !!req.session.user;
   if (req.session.user) {
     const { user } = req.session;

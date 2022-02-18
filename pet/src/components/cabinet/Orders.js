@@ -1,28 +1,20 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import Title from './Title';
+/* eslint-disable */
+import * as React from "react";
+import Title from "./Title";
+import Card from "./Card";
+import { Grid } from "@mui/material";
 
-export default function Orders() {
-  const [list, setList] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get('http://localhost:4000/projects/find')
-      .then((res) => {
-        console.log(res);
-        setList((el) => [...el, ...res.data]);
-      });
-  }, []);
-
+export default function Orders({ list }) {
   return (
-    <div>
+    <>
       <Title>Список проектов</Title>
-      <ul>
+      <Grid container spacing={3}>
         {list?.map((el) => (
-          <li key={el.id}>{el.title}</li>
+          <Grid xs={12} xl={3} lg={3} md={3} sm={4} item key={el.id}>
+            <Card project={el} />
+          </Grid>
         ))}
-      </ul>
-    </div>
+      </Grid>
+    </>
   );
 }

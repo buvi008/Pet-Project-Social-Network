@@ -1,44 +1,42 @@
-/* eslint-disable object-shorthand */
-import * as React from 'react';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+/* eslint-disable */
+import * as React from "react";
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Button } from '@mui/material';
-import axios from 'axios';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCreate } from '../redux/actionCreators/createProject';
+import {
+  Button,
+  Box,
+  Container,
+  TextField,
+  Typography,
+  Grid,
+  FormControlLabel,
+  Checkbox,
+} from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchCreate } from "../../redux/actionCreators/createProject";
 
 export default function CreateForm({ tags }) {
   const navigate = useNavigate();
   // const [title, SetTitle] = useState(null);
   // const [description, SetDescription] = useState(null);
   // const [SDescription, SetSDescription] = useState(null);
-  const user = useSelector((state) => state.checkSessionReducer.user);
   const dispatch = useDispatch();
-  console.log('user', user);
   const handleSubmit = async (event) => {
     event.preventDefault();
     // eslint-disable-next-line no-console
     const input = new FormData(event.currentTarget);
     const body = {
-      title: input.get('title'),
-      description: input.get('description'),
-      short_description: input.get('SDescription'),
-      creator_id: user.id,
+      title: input.get("title"),
+      description: input.get("description"),
+      short_description: input.get("SDescription"),
     };
 
     const data = await dispatch(fetchCreate(body));
-    navigate('/personal');
+    navigate("/personal");
   };
 
   return (
-    <>
+    <Container maxWidth={"lg"} sx={{ py: 6 }}>
       <Typography variant="h6" gutterBottom>
         Shipping address
       </Typography>
@@ -49,7 +47,7 @@ export default function CreateForm({ tags }) {
               required
               id="title"
               name="title"
-              label="title"
+              label="Название проекта"
               fullWidth
               autoComplete="given-name"
               variant="standard"
@@ -60,7 +58,7 @@ export default function CreateForm({ tags }) {
               required
               id="short_description"
               name="short_description"
-              label="short_description"
+              label="Краткое описание"
               fullWidth
               autoComplete="family-name"
               variant="standard"
@@ -71,7 +69,7 @@ export default function CreateForm({ tags }) {
               required
               id="description"
               name="description"
-              label="description"
+              label="Подробное описание"
               fullWidth
               autoComplete="shipping address-line1"
               variant="standard"
@@ -87,6 +85,6 @@ export default function CreateForm({ tags }) {
           Создать
         </Button>
       </Box>
-    </>
+    </Container>
   );
 }

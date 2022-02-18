@@ -1,4 +1,5 @@
-import { CHECK_SESSION } from '../actionTypes/isAuthorizedAT';
+/* eslint-disable */
+import { CHECK_SESSION } from "../actionTypes/isAuthorizedAT";
 
 const initialState = { isAuthorized: false, user: [] };
 

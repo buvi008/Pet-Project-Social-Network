@@ -1,17 +1,13 @@
-import { CHECK_SESSION } from '../actionTypes/isAuthorizedAT';
+/* eslint-disable */
+import axios from "axios";
+import { CHECK_SESSION } from "../actionTypes/isAuthorizedAT";
 
 export const checkSession = (payload) => ({ type: CHECK_SESSION, payload });
 
 export const fetchCheckSession = () => (dispatch) => {
-  fetch('http://localhost:4000/isAuthorized', {
-    method: 'POST',
-    credentials: 'include',
-    headers: {
-      'Content-type': 'application/json',
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => {
+  axios
+    .get("http://localhost:4000/isAuthorized")
+    .then(({ data }) => {
       if (data.isAuthorized) {
         dispatch(checkSession({ status: data.isAuthorized, user: data.user }));
       }
