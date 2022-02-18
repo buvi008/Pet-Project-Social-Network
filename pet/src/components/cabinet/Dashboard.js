@@ -30,7 +30,7 @@ function DashboardContent() {
   );
 
   useEffect(() => {
-    axios.get("http://localhost:4000/project/find").then((res) => {
+    axios.get("http://localhost:4000/project/findLK").then((res) => {
       console.log(res);
       setList((el) => [...res.data]);
     });

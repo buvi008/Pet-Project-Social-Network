@@ -5,6 +5,18 @@ router.route("/find").get(async (req, res) => {
   console.log("projects==>", req.session);
   try {
     const project = await Project.findAll({
+      raw: true,
+    });
+    return res.status(200).json(project);
+  } catch (e) {
+    return res.status(400).json(project);
+  }
+});
+
+router.route("/findLK").get(async (req, res) => {
+  console.log("projects==>", req.session);
+  try {
+    const project = await Project.findAll({
       where: { creator_id: req.session.user.id },
       raw: true,
     });
