@@ -14,7 +14,7 @@ function Project() {
     axios
       .get(`http://localhost:4000/project/${id}`)
       .then((res) => setProject(res.data));
-  }, [origin]);
+  }, []);
 
   return (
     <Grid container sx={{ py: 3 }}>

@@ -34,7 +34,7 @@ function DashboardContent() {
       console.log(res);
       setList((el) => [...res.data]);
     });
-  }, [list]);
+  }, []);
   return (
     <Box sx={{ display: "flex" }}>
       <Box
