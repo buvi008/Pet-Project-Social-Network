@@ -14,7 +14,7 @@ export default function Blog({ project }) {
   const mainFeaturedPost = {
     title: project.title ?? "",
     description: project.description ?? "",
-    image: "https://source.unsplash.com/random",
+    image: project.projectImg,
     imageText: "main image description",
     linkText: "Continue reading…",
   };
@@ -25,7 +25,7 @@ export default function Blog({ project }) {
       date: "Nov 12",
       description:
         "This is a wider card with supporting text below as a natural lead-in to additional content.",
-      image: "https://source.unsplash.com/random",
+      image: project.projectImg,
       imageLabel: "Image Text",
     },
     {
@@ -33,7 +33,7 @@ export default function Blog({ project }) {
       date: "Nov 11",
       description:
         "This is a wider card with supporting text below as a natural lead-in to additional content.",
-      image: "https://source.unsplash.com/random",
+      image: project.projectImg,
       imageLabel: "Image Text",
     },
   ];

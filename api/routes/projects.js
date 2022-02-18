@@ -1,5 +1,18 @@
 const router = require("express").Router();
+const fs = require('fs');
+const path = require('path');
 const { Project, Tag } = require("./../db/models");
+
+const photosBase = fs
+  .readFileSync(path.resolve(process.cwd(), 'routes', './photos.txt'), 'utf8')
+  .trim()
+  .split('\n');
+
+function random(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
 router.route("/find").get(async (req, res) => {
   console.log("projects==>", req.session);
@@ -12,6 +25,7 @@ router.route("/find").get(async (req, res) => {
     return res.status(400).json(project);
   }
 });
+
 
 router.route("/findLK").get(async (req, res) => {
   console.log("projects==>", req.session);
@@ -35,6 +49,7 @@ router.route("/create").post(async (req, res) => {
       description: req.body.description,
       short_description: req.body.short_description,
       creator_id: req.session.user.id,
+      projectImg: photosBase[random(1, 1000)],
     });
   } catch (error) {
     return res.json({
@@ -122,5 +137,7 @@ router.route("/:id").get(async (req, res) => {
   console.log(project.dataValues);
   return res.json(project.dataValues);
 });
+
+
 
 module.exports = router;
