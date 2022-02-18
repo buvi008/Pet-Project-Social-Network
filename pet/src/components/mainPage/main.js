@@ -23,7 +23,7 @@ export default function Album() {
         .get("http://localhost:4000/project/find")
         .then((res) => setCards(res.data));
     })();
-  }, []);
+  }, [cards]);
 
   return (
     <>

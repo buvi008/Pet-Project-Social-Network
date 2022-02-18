@@ -24,7 +24,7 @@ function EditProject() {
         .get(`http://localhost:4000/project/${id}`)
         .then((res) => setProjects(res.data));
     })();
-  }, []);
+  }, [project]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

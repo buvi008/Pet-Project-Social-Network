@@ -36,7 +36,7 @@ function App() {
         .get("http://localhost:4000/project/tags")
         .then((res) => setTags(res.data));
     })();
-  }, []);
+  }, [tags]);
 
   const theme = createTheme({
     palette: {
